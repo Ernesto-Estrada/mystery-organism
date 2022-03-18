@@ -58,11 +58,35 @@ const pAequorFactory = (number, arrDNA) => {
       } else {
         return false;
       }
+    },
+    complementStrand() {
+      let complementSrand = [];
+      this.dna.forEach(base => {
+        switch (base) {
+          case 'A':
+            complementSrand.push('T');
+          break;
+          case 'T':
+            complementSrand.push('A');
+          break;
+          case 'C':
+            complementSrand.push('G');
+          break;
+          case 'G':
+            complementSrand.push('C');
+          break;
+          default:
+            console.log('Something wrong happened!');
+          break          
+        }
+      });
+      //console.log(this.dna);
+      return complementSrand;
     }
   };
 }
 
-//const p1 = pAequorFactory(1, mockUpStrand());
+const p1 = pAequorFactory(1, mockUpStrand());
 //const p2 = pAequorFactory(2, mockUpStrand());
 //console.log(p1.mutate());
 //console.log(p1.compareDNA(p2));
@@ -80,6 +104,8 @@ for (let i = 1; i <= 30; i++) {
 }
 
 //console.log(batch);
+
+//console.log(p1.complementStrand());
 
 
 
