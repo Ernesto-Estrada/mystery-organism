@@ -29,12 +29,29 @@ const pAequorFactory = (number, arrDNA) => {
       }
       console.log('Base to mutate: ' + arrDNA[baseToMutate] + ' . DNA index: ' + baseToMutate + '\nNew base: ' + newBase);
       this.dna[baseToMutate] = newBase;
+    },
+    compareDNA(pObj) {
+      let dnaInCommon = 0;
+      for (let i = 0; i < this.dna.length; i++) {
+        for (let j = 0; j < pObj.dna.length; j++) {
+          if (i === j && this.dna[i] === pObj.dna[j]) {
+            dnaInCommon++;
+          }
+        }
+      }
+      //console.log(dnaInCommon);
+      console.log(`The specimens share a ${((dnaInCommon / 15) * 100.).toFixed(2)}% of DNA.`);
+      //console.log(this.dna);
+      //console.log(pObj.dna);
     }
   };
 }
 
-//const p1 = pAequorFactory(1, mockUpStrand());
+const p1 = pAequorFactory(1, mockUpStrand());
+const p2 = pAequorFactory(2, mockUpStrand());
 //console.log(p1.mutate());
+
+console.log(p1.compareDNA(p2));
 
 
 
